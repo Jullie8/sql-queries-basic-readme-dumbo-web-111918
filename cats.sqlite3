@@ -1,0 +1,18 @@
+# create database connection here
+import sqlite3
+connection = sqlite3.connect('pets_database.db')
+cursor = connection.cursor()
+
+# create table here
+cursor.execute('''CREATE TABLE cats ( id INTEGER PRIMARY KEY, name TEXT, age INTEGER, breed TEXT, owner_id INTEGER );''')
+
+# insert data here
+cursor.execute('''INSERT INTO cats (name, age, breed, owner_id) VALUES ("Maru", 3 , "Scottish Fold", 1);''')
+cursor.execute('''INSERT INTO cats (name, age, breed, owner_id) VALUES ("Hana", 1 , "Tabby", 1);''')
+cursor.execute('''INSERT INTO cats (name, age, breed) VALUES ("Lil\' Bub", 5, "American Shorthair");''')
+cursor.execute('''INSERT INTO cats (name, age, breed) VALUES ("Moe", 10, "Tabby");''')
+cursor.execute('''INSERT INTO cats (name, age, breed) VALUES ("Patches", 2, "Calico");''')
+
+# select all data from cats data here
+cursor.execute('''SELECT * FROM cats;''').fetchall()
+
